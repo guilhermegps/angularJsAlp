@@ -6,9 +6,17 @@
         <title>Alurapic</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/efeitos.css">
         <script src="js/lib/angular.min.js" charset="utf-8"></script>
+
+        <!-- importando o módulo ngAnimate -->
+
+        <script src="js/lib/angular-animate.min.js"></script>
+
+        
         <script src="js/main.js" charset="utf-8"></script>
         <script src="js/controllers/fotos-controller.js" charset="utf-8"></script>
+        <script src="js/directives/minhas-diretivas.js" charset="utf-8"></script>
     </head>
     <body ng-controller="FotosController"> <!-- ng-controller é uma diretiva que aponta qual é o controller daquele elemento  -->
         <div class="container">
@@ -17,14 +25,19 @@
             <h1 class="text-center">Alurapic</h1>
           </div>
 
-          <div ng-repeat="foto in fotos" class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">{{foto.titulo}}</h3>
+          <div class="row">
+            <div class="cold-md-12">
+              <form>
+                <input ng-model="filtro" ng-model-options="{debounce: 500}" class="form-control" placeholder="filtrar">
+              </form>
             </div>
-            <div class="panel-body">
+          </div>
+
+          <div class="row">
+            <meu-painel class="col-md-2 painel-animado" ng-repeat="foto in fotos | filter: filtro" titulo="{{foto.titulo}}">
               <img class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}">
-            </div>
-          </div> <!-- fim do panel -->
+            </meu-painel>
+          </div>
 
         </div> <!-- fim container -->
     </body>

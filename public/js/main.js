@@ -1,2 +1,2 @@
 // Objeto global 'angular'
-angular.module('alurapic', []); // Criando um módulo
+angular.module('alurapic', ['minhasDiretivas', 'ngAnimate']); // Criando um módulo
